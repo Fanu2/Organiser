@@ -27,8 +27,9 @@ class Organizer:
         self.on_selection_change = None
 
         # Organizing options
+        # Use keyword 'value=' to avoid passing a positional master accidentally
         self.method_var = StringVar(value="type")
-        self.keyword_var = StringVar("")
+        self.keyword_var = StringVar(value="")   # <-- FIXED: use value= instead of StringVar("")
         self.dry_run_var = IntVar(value=1)
         self.copy_var = IntVar(value=0)
         self.pref_exif_var = IntVar(value=1)
@@ -291,4 +292,3 @@ class Organizer:
             write_undo_operation(operations)
 
         messagebox.showinfo("Completed", f"Processed {done}/{total} files.")
-
